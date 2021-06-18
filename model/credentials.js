@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const branchAuth = new mongoose.Schema({
+const credentials = new mongoose.Schema({
     name:{
         type:String,
         required:true,
@@ -11,4 +11,4 @@ const branchAuth = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('branch',branch);
+module.exports = mongoose.model('credentials',credentials);

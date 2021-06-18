@@ -6,7 +6,8 @@ const app = express();
 const db = require('./database');
 const enterData = require('./enterData');
 const data = require('./parser');
-const auth = require('./auth/auth')
+const auth = require('./auth/auth');
+const enterCredentials = require('./enterCredentials');
 
 app.use(express.json());
 
@@ -25,6 +26,10 @@ app.get('/',(req,res) =>{
 // enterData(data).catch(e => {
 //     console.log(e);
 // });
+
+enterCredentials(data).catch(e => {
+    console.log(e);
+})
 
 app.use('/users',auth);
 
