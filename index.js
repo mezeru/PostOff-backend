@@ -23,13 +23,13 @@ app.get('/',(req,res) =>{
     console.log();
 })
 
-// enterData(data).catch(e => {
+// enterData(data).catch(e => {                                         // Enter All the Data in MongoDB
 //     console.log(e);
 // });
 
-enterCredentials(data).catch(e => {
-    console.log(e);
-})
+// enterCredentials(data).catch(e => {                                 // Enter The Login Credentials in MongoDB
+//     console.log(e);
+// })
 
 app.use('/users',auth);
 
