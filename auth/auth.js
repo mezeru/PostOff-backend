@@ -13,10 +13,10 @@ router.get('/login',async (req,res) => {
         }
         
         if (await bcrypt.compare(req.body.password,branch.password)){
-            res.send("Success");
+            res.status(200).send("Success");
         }
         else{
-            res.send("In Valid Credentials")
+            res.status(401).send("BAD Credentials")
         }
     
     }
