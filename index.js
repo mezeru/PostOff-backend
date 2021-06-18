@@ -6,6 +6,7 @@ const app = express();
 const db = require('./database');
 const enterData = require('./enterData');
 const data = require('./parser');
+// const auth = require('./auth/auth')
 
 app.use(express.json());
 
@@ -17,9 +18,15 @@ app.use(
 
 db();
 
+app.get('/',(req,res) =>{
+    console.log();
+})
+
 // enterData(data).catch(e => {
 //     console.log(e);
 // });
+
+// app.use('/login',auth);
 
 
 app.listen(port,() => {
