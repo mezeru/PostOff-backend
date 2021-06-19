@@ -7,7 +7,7 @@ const app = express();                                                  // Creat
 const db = require('./database');                                       // Importing Database
 const enterData = require('./enterData');                               // Function for enteringData
 const data = require('./parser');                                       // Data Parsed
-const authRouter = require('./autho/authenticateCred');            // Login Routes
+const authRouter = require('./autho/authenticateCred');                 // Login Routes
 const authendicateToken = require('./autho/authenticateToken')
 const enterCredentials = require('./enterCredentials');                 // Function for entering credentials
 
