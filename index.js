@@ -7,9 +7,9 @@ const app = express();                                                  // Creat
 const db = require('./database');                                       // Importing Database
 const enterData = require('./enterData');                               // Function for enteringData
 const data = require('./parser');                                       // Data Parsed
-const auth = require('./autho/authenticateCred');                                    // Authendicator Routes
+const authRouter = require('./autho/authenticateCred');            // Login Routes
+const authendicateToken = require('./autho/authenticateToken')
 const enterCredentials = require('./enterCredentials');                 // Function for entering credentials
-const authToken = require('./autho/authenticateToken'); 
 
 app.use(express.json());
 
@@ -21,8 +21,8 @@ app.use(
 
 db();                                                                   // Connecting to Database
 
-app.get('/', authToken , (req,res) =>{
-    res.json({res:"Allowed"});
+app.get('/', authendicateToken , (req,res) =>{
+    res.sendStatus(200);
 })
 
 // enterData(data).catch(e => {                                         // Enter All the Data in MongoDB
@@ -33,7 +33,7 @@ app.get('/', authToken , (req,res) =>{
 //     console.log(e);
 // })
 
-app.use('/users',auth);                                                 // Login Authendication Routes
+app.use('/users',authRouter);                                                 // Login Authendication Routes
 
 
 app.listen(port,() => {
