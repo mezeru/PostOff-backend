@@ -6,6 +6,11 @@ const jwt = require('jsonwebtoken')
 const credentialsModel = require('../model/credentials');
 const refreshTokenDb = require('../model/refreshTokens')
 
+const generateToken = (user) => {
+    const token = jwt.sign( user , process.env.ACCESS_TOKEN_SECRET, {expiresIn: "10s"} );
+    return token;
+}
+
 router.get('/login',async (req,res) => {
     let branch;
 
@@ -15,7 +20,7 @@ router.get('/login',async (req,res) => {
             return res.status(500).send("Not-Found");
         }
         
-        if (await bcrypt.compare(req.body.password,branch.password)){
+        if (await bcrypt.compare(req.body.password,branch.password).catch(e => console.log(e))){
             const user = {
                 name:req.body.name
             }
@@ -48,15 +53,44 @@ router.get('/login',async (req,res) => {
     }
 });
 
-router.get('/token',async (req,res) =>{
+router.post('/token', async (req,res) =>{
+
+    const refreshToken = req.body.token;
+    if(!refreshToken){
+        res.sendStatus(401);
+    }
+
+    const tokenFromDb = await refreshTokenDb.findOne({refreshToken:refreshToken});
+
+    if(tokenFromDb === null){
+        res.json(403)
+    }
+
+    const resp = jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET,(e,user) => {
+        
+        const accessToken = generateToken({name:req.body.name});
+
+        res.json({accessToken:accessToken});
+
+    });
+
+    
+    
+});
+
+router.delete('/logout',async (req,res) => {
+
+    const token = req.body.token;
+    const resp = await refreshTokenDb.deleteOne({refreshToken:token}).catch(e =>{
+        res.sendStatus(500);
+    });
+
+    res.json({msg:resp});
 
 });
 
 
-const generateToken = (user) => {
-    const token = jwt.sign( user , process.env.ACCESS_TOKEN_SECRET, {expiresIn: '10m'} );
-    return token;
-}
+
 
 
 module.exports = router;

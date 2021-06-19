@@ -14,7 +14,7 @@ module.exports = (req,res,next) => {
     jwt.verify(token,process.env.ACCESS_TOKEN_SECRET ,(e,user) => {
 
         if(e){
-            res.sendStatus(403);
+            res.json({msg:"Denied"});
         }
         req.user = user;
         

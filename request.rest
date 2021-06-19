@@ -8,5 +8,19 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmFkbGFwdXIiLCJpYXQiOjE2MjQxMTE4NjEsImV4cCI6MTYyNDExMTg2Mn0.X750-S8CAYxLab6UcGy-vj7hPIieMVDkxPRKcaUNq9A
+POST http://localhost:3000/users/token
+Content-Type: application/json
+
+{
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmFkbGFwdXIiLCJpYXQiOjE2MjQxMzQ0ODh9.gqE0sdKfy6G5tk5T_1tcfo0ID3FUcrzqCI7XUSKn9t8"
+}
+
+
+###
+
+DELETE http://localhost:3000/users/logout
+Content-Type: application/json
+
+{
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmFkbGFwdXIiLCJpYXQiOjE2MjQxMzQ0ODh9.gqE0sdKfy6G5tk5T_1tcfo0ID3FUcrzqCI7XUSKn9t8"
+}

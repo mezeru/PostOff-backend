@@ -28,11 +28,11 @@ app.use(
 db();                                                                   // Connecting to Database
 
 app.get('/',(req,res) =>{
-    res.sendStatus(200).json({mesg:"Server Running"});
+    res.json({message:"Access Given"});
 })
 
 app.get('/main', authendicateToken , (req,res) =>{
-    res.json({req:req.user});
+    res.json({msg:"Authorised"});
 })
 
 // enterData(data).catch(e => {                                         // Enter All the Data in MongoDB
@@ -43,7 +43,7 @@ app.get('/main', authendicateToken , (req,res) =>{
 //     console.log(e);
 // })
 
-app.use('/users',authRouter);                                                 // Login Authendication Routes
+app.use('/users',authRouter);                                           // Login Authendication Routes
 
 
 app.listen(port,() => {
