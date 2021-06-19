@@ -27,7 +27,11 @@ app.use(
 
 db();                                                                   // Connecting to Database
 
-app.get('/', authendicateToken , (req,res) =>{
+app.get('/',(req,res) =>{
+    res.sendStatus(200);
+})
+
+app.get('/main', authendicateToken , (req,res) =>{
     res.json({req:req.user});
 })
 
