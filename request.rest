@@ -3,5 +3,10 @@ Content-Type: application/json
 
 {
     "name":"Badlapur",
-    "password":"adlapur"
+    "password":"Badlapur"
 }
+
+###
+
+GET http://localhost:3000/
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmFkbGFwdXIiLCJpYXQiOjE2MjQwNzMzNTJ9._4r7jN_sWbYOLgjVnZHVnG7462Wp-Qpnr5UPZyKuDT4
