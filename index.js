@@ -28,7 +28,7 @@ app.use(
 db();                                                                   // Connecting to Database
 
 app.get('/',(req,res) =>{
-    res.sendStatus(200);
+    res.sendStatus(200).json({mesg:"Server Running"});
 })
 
 app.get('/main', authendicateToken , (req,res) =>{
