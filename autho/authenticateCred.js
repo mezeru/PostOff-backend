@@ -2,14 +2,11 @@ require('dotenv').config();
 const express = require('express');
 const bcrypt = require('bcrypt');
 const router = express.Router();
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 const credentialsModel = require('../model/credentials');
-const refreshTokenDb = require('../model/refreshTokens')
+const refreshTokenDb = require('../model/refreshTokens');
+const generateToken = require('./generateToken');
 
-const generateToken = (user) => {
-    const token = jwt.sign( user , process.env.ACCESS_TOKEN_SECRET, {expiresIn: "10s"} );
-    return token;
-}
 
 router.get('/login',async (req,res) => {
     let branch;
@@ -49,11 +46,11 @@ router.get('/login',async (req,res) => {
     
     }
     catch(e){
-        return res.status(500).json({message: error.message})
+        return res.status(500).json({message: e.message})
     }
 });
 
-router.post('/token', async (req,res) =>{
+router.post('/token', async (req,res,next) =>{
 
     const refreshToken = req.body.token;
     if(!refreshToken){
@@ -70,7 +67,7 @@ router.post('/token', async (req,res) =>{
         
         const accessToken = generateToken({name:req.body.name});
 
-        res.json({accessToken:accessToken});
+        next()
 
     });
 
