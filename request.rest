@@ -9,4 +9,4 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3000/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmFkbGFwdXIiLCJpYXQiOjE2MjQxMDk3NDZ9.H1CF_9pv1XtPedjVxorH1aWHH5GmMUZW3c72DZrfcdA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmFkbGFwdXIiLCJpYXQiOjE2MjQxMTE4NjEsImV4cCI6MTYyNDExMTg2Mn0.X750-S8CAYxLab6UcGy-vj7hPIieMVDkxPRKcaUNq9A
