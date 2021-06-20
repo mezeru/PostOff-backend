@@ -28,18 +28,18 @@ app.use(
 db();                                                                   // Connecting to Database
 
 app.get('/',(req,res) =>{
-    res.json({message:"Access Given"});
+    res.json({message:"Login"});
 })
 
 app.get('/main', authendicateToken , (req,res) =>{
     res.json({msg:"Authorised"});
 })
 
-// enterData(data).catch(e => {                                         // Enter All the Data in MongoDB
+// enterData(data).catch(e => {                                         // Enter All the Data in MongoDB in the first run
 //     console.log(e);
 // });
 
-// enterCredentials(data).catch(e => {                                  // Enter The Login Credentials in MongoDB
+// enterCredentials(data).catch(e => {                                  // Enter The Login Credentials in MongoDB in the first run
 //     console.log(e);
 // })
 
