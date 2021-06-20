@@ -8,10 +8,11 @@ const refreshTokenDb = require('../model/refreshTokens');
 const generateToken = require('./generateToken');
 
 
-router.get('/login',async (req,res) => {
+router.post('/login',async (req,res) => {
     let branch;
 
     try{
+        console.log(req.body);
         branch = await credentialsModel.findOne({name: req.body.name});
         if(branch == null){
             return res.status(500).send("Not-Found");
