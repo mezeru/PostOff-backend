@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const alert = require("./alert");
+
 const branch = new mongoose.Schema({
     
     insitutionName:{
@@ -29,6 +31,9 @@ const branch = new mongoose.Schema({
     pincode:{
         type: [String],
         required:true
+    },
+    alerts:{
+        type:[alert]    
     }
 
 });

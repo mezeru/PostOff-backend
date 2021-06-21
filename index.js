@@ -45,6 +45,8 @@ app.get('/main', authendicateToken , (req,res) =>{
 
 app.use('/users',authRouter);                                           // Login Authendication Routes
 
+app.use('/Branch',Router);  
+
 
 app.listen(port,() => {
     console.log("Server Is Listening @ ",port);                         // Server Listening
