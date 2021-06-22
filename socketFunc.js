@@ -6,7 +6,7 @@ module.exports = async function(branchName){
             branchName:branchName
         });
         
-        
+        return branch.alerts.reverse();        
     }
     catch(e){
         return e;

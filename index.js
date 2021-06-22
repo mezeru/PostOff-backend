@@ -15,6 +15,7 @@ const passport = require('passport')
 const passportStrat = require('./autho/passport-config');
 const socketFunc = require('./socketFunc');
 const branch = require('./model/branch');
+const authenticateToken = require('./autho/authenticateToken');
 const io = require('socket.io')(3001,{
     cors:({
         origin:"*"
@@ -45,11 +46,6 @@ app.get('/',(req,res) =>{
     res.json({message:"Login"});
 })
 
-app.get('/main', authendicateToken , (req,res) =>{
-    res.json({msg:"Authorised"});
-})
-
-
 // enterData(data).catch(e => {                                         // Enter All the Data in MongoDB in the first run
 //     console.log(e);
 // });
@@ -65,11 +61,16 @@ app.use('/users',authRouter);                                           // Login
 app.use('/customer',customerRoute);  
 
 io.on('connection', socket => {
-    socket.on('fetchData', async (name) =>{
-        const alerts = await socketFunc(name);
-        console.log(alerts);
-        io.emit("sendAlerts",alerts);
-    } );
+
+        socket.on('fetchData', async (name,token) =>{
+
+            if(authendicateToken(token)){
+            const alerts = await socketFunc(name);
+            io.emit("sendAlerts",alerts);
+            }
+        });
+
+    
 });
 
 
