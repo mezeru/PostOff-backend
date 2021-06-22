@@ -8,16 +8,16 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:3000/users/token
+GET http://localhost:3000/main
 Content-Type: application/json
 
 {
-    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmFkbGFwdXIiLCJpYXQiOjE2MjQxMzcxNjYsImV4cCI6MTYyNDEzNzE3Nn0.vBB9VQ92UC3PUqLcdV-kOZVx7Qu0Yu9wJQ7iTJArU3M"
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiV2Fzc2V5cHVyIiwiaWF0IjoxNjI0MzQ4Nzg5LCJleHAiOjE2MjQzNDkzODl9.zH_ayapdqoDBGGmw7Il4vqDFsxGkr8xg0OpqBD3Shmk"
 }
 
 ###
 
-DELETE http://localhost:3000/users/logout
+DELETE http://localhost:3000/users/main
 Content-Type: application/json
 
 {
@@ -27,8 +27,6 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3000/main
-
-Authorization: B eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmFkbGFwdXIiLCJpYXQiOjE2MjQxMzU2MDMsImV4cCI6MTYyNDEzNTYxM30.UyvEYD5AWJRBC157ni2AkU0ULG9QDVusTuMl-e5hKRI
 
 
 ###

@@ -2,6 +2,7 @@ var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
 const credentialsModel = require('../model/credentials');
 const bcrypt = require('bcrypt');
+const generateToken = require('./generateToken')
 
 passport.serializeUser((user,done)=> done(null,user));
 passport.deserializeUser((user,done)=> done(null,user));
@@ -31,7 +32,7 @@ module.exports = passport.use(new LocalStrategy({
       }
       else{
 
-        done(null,false,)
+        done(null,false,{message:"Wrong Credentials"})
 
       }
 

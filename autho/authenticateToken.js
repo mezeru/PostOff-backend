@@ -3,22 +3,27 @@ const jwt = require('jsonwebtoken')
 
 module.exports = (req,res,next) => {
     const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(" ")[1];
+    const token = req.body.token;
     const user = {
         name: req.body.name,
     }
     if(token === null){
-        res.sendStatus(401);
+        res.snedStatus(401);
     }
 
     jwt.verify(token,process.env.ACCESS_TOKEN_SECRET ,(e,user) => {
 
-        if(e){
+        if( e ){
             res.json({msg:"Denied"});
         }
-        req.user = user;
+        else{
+            
+            req.user = user;
         
-        next();
+            next();
+        }
+        
+        
 
     });
 

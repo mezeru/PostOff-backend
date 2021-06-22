@@ -9,50 +9,23 @@ const generateToken = require('./generateToken');
 const passport = require('passport');
 
 router.post('/login', passport.authenticate('local') ,async (req,res) => {
-    console.log(req.user);
-    res.json({msg:"OK"})
-    // let branch;
 
-    // try{
+    const token = generateToken(req.user);
+    const refreshToken = jwt.sign(req.user , process.env.REFRESH_TOKEN_SECRET );
 
-    //     branch = await credentialsModel.findOne({name: req.body.name}).catch(e => {
-    //     });
-        
-    //     if(branch == null){
-    //         return res.send("Not-Found");
-    //     }
-        
-    //     if (await bcrypt.compare(req.body.password,branch.password).catch(e => console.log(e))){
-    //         const user = {
-    //             name:req.body.name
-    //         }
-           
-    //        const token = generateToken(user);
-    //        const refreshToken = jwt.sign(user , process.env.REFRESH_TOKEN_SECRET )
+    try{
+        const RefreshToken = new refreshTokenDb({
+            refreshToken: refreshToken
+        })
+ 
+       const resp = await RefreshToken.save();
+       res.status(200).json({accessToken:token , refreshToken:refreshToken });
 
-    //         try{
-    //         const RefreshToken = new refreshTokenDb({
-    //         refreshToken: refreshToken
-    //         })
-
-    //         const resp = await RefreshToken.save();
-    //         }
-    //         catch(e){
-    //             console.log(e);
-    //         }
-
-            
-    //        res.status(200).json({accessToken:token , refreshToken:refreshToken });
-
-    //     }
-    //     else{
-    //         res.status(401).send("BAD-Credentials")
-    //     }
+       }
+       catch(e){
+         console.log(e);
+       }
     
-    // }
-    // catch(e){
-    //     return res.status(500).json({message: e.message})
-    // }
 });
 
 router.post('/token', async (req,res,next) =>{
