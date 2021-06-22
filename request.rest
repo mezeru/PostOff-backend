@@ -12,7 +12,7 @@ GET http://localhost:3000/main
 Content-Type: application/json
 
 {
-    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiV2Fzc2V5cHVyIiwiaWF0IjoxNjI0MzQ4Nzg5LCJleHAiOjE2MjQzNDkzODl9.zH_ayapdqoDBGGmw7Il4vqDFsxGkr8xg0OpqBD3Shmk"
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiV2Fzc2V5cHVyIiwiaWF0IjoxNjI0MzUyNjIyLCJleHAiOjE2MjQzNTMyMjJ9.GddqHJ2xCt1XPuNev-DJFlnypU-04Kf4v9Ab-lxg_dc"
 }
 
 ###

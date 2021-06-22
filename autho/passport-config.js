@@ -38,19 +38,6 @@ module.exports = passport.use(new LocalStrategy({
 
   }
 
-    const token = generateToken(user);
-    const refreshToken = jwt.sign(user , process.env.REFRESH_TOKEN_SECRET )
-
-    try{
-       const RefreshToken = new refreshTokenDb({
-       refreshToken: refreshToken
-       })
-
-      const resp = await RefreshToken.save();
-      }
-      catch(e){
-        console.log(e);
-      }
 
     }catch(e){
       done(e);
