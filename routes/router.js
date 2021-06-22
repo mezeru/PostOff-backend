@@ -4,7 +4,10 @@ const branchModel = require('../model/branch')
 const router = express.Router();
 
 router.put('/',async (req,res) => {
-    
+
+
+    console.log(req.body);
+
     const pincode = req.body.pincode;
     const contact = req.body.contact;
 
@@ -25,14 +28,14 @@ router.put('/',async (req,res) => {
         );
 
         if(resp.n === 0){
-            res.sendStatus(404)
+            res.sendStatus(404);
         }
         else{
-            res.sendStatus(200)
+            res.sendStatus(200);
         }
 
     }catch(e){
-        res.sendStatus(500);
+        res.sendStatus(400);
     }
 
 
