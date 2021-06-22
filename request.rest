@@ -2,7 +2,7 @@ POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-    "name":"Wasseypur",
+    "name":"Wassesdasdypur",
     "password":"Wasseypur"
 }
 
@@ -29,3 +29,14 @@ Content-Type: application/json
 GET http://localhost:3000/main
 
 Authorization: B eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmFkbGFwdXIiLCJpYXQiOjE2MjQxMzU2MDMsImV4cCI6MTYyNDEzNTYxM30.UyvEYD5AWJRBC157ni2AkU0ULG9QDVusTuMl-e5hKRI
+
+
+###
+
+PUT http://localhost:3000/customer
+Content-Type: application/json
+
+{
+    "pincode":"70dasdasd0018",
+    "contact":"1829128901"
+}

@@ -15,7 +15,7 @@ router.post('/login',async (req,res) => {
         console.log(req.body);
         branch = await credentialsModel.findOne({name: req.body.name});
         if(branch == null){
-            return res.status(500).send("Not-Found");
+            return res.sendStatus(404).send("Not-Found");
         }
         
         if (await bcrypt.compare(req.body.password,branch.password).catch(e => console.log(e))){

@@ -3,12 +3,12 @@ const alert = new mongoose.Schema({
     
     contactinfo: {
         type:Number,
-        required:True,
+        required:true,
     },
 
     Time:{
-        type:Date,
-        default:Date.now
+        type:String,
+        required:true
     }
 
 });

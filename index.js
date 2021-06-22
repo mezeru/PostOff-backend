@@ -10,6 +10,7 @@ const data = require('./parser');                                       // Data 
 const authRouter = require('./autho/authenticateCred');                 // Login Routes
 const authendicateToken = require('./autho/authenticateToken')
 const enterCredentials = require('./enterCredentials');                 // Function for entering credentials
+const customerRoute = require('./routes/router')
 
 app.use(express.json());
 
@@ -45,7 +46,7 @@ app.get('/main', authendicateToken , (req,res) =>{
 
 app.use('/users',authRouter);                                           // Login Authendication Routes
 
-app.use('/Branch',Router);  
+app.use('/customer',customerRoute);  
 
 
 app.listen(port,() => {

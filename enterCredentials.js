@@ -14,7 +14,6 @@ module.exports = async function enter(dataList){
 
         try{
             const resp = await credential.save();
-            console.log(resp);
         }
         catch(e){
             console.log(e);
