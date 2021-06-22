@@ -37,6 +37,6 @@ PUT http://localhost:3000/customer
 Content-Type: application/json
 
 {
-    "pincode":"70dasdasd0018",
+    "pincode":"700018",
     "contact":"1829128901"
 }

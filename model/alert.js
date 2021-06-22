@@ -9,6 +9,10 @@ const alert = new mongoose.Schema({
     Time:{
         type:String,
         required:true
+    },
+    Seen:{
+        type:Boolean,
+        default:false
     }
 
 });
