@@ -11,6 +11,12 @@ const authRouter = require('./autho/authenticateCred');                 // Login
 const authendicateToken = require('./autho/authenticateToken')
 const enterCredentials = require('./enterCredentials');                 // Function for entering credentials
 const customerRoute = require('./routes/router')
+const passport = require('passport');
+const initpassport = require('./autho/passport-config');
+
+
+app.use(passport.initialize());
+
 
 app.use(express.json());
 
@@ -32,7 +38,10 @@ app.get('/',(req,res) =>{
     res.json({message:"Login"});
 })
 
-app.get('/main', authendicateToken , (req,res) =>{
+app.get('/main', initpassport.authenticate('local',{
+    successRedirect:'/',
+    failureRedirect:'/login'
+}) , (req,res) =>{
     res.json({msg:"Authorised"});
 })
 
