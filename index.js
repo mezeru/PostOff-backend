@@ -11,14 +11,11 @@ const authRouter = require('./autho/authenticateCred');                 // Login
 const authendicateToken = require('./autho/authenticateToken')
 const enterCredentials = require('./enterCredentials');                 // Function for entering credentials
 const customerRoute = require('./routes/router')
-const passport = require('passport');
-const initpassport = require('./autho/passport-config');
-
-
-app.use(passport.initialize());
-
+const passport = require('passport')
+const passportStrat = require('./autho/passport-config')
 
 app.use(express.json());
+
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin*"); 
@@ -34,14 +31,13 @@ app.use(
 
 db();                                                                   // Connecting to Database
 
+app.use(passport.initialize());
+
 app.get('/',(req,res) =>{
     res.json({message:"Login"});
 })
 
-app.get('/main', initpassport.authenticate('local',{
-    successRedirect:'/',
-    failureRedirect:'/login'
-}) , (req,res) =>{
+app.get('/main', authendicateToken , (req,res) =>{
     res.json({msg:"Authorised"});
 })
 
@@ -52,6 +48,8 @@ app.get('/main', initpassport.authenticate('local',{
 // enterCredentials(data).catch(e => {                                  // Enter The Login Credentials in MongoDB in the first run
 //     console.log(e);
 // })
+
+
 
 app.use('/users',authRouter);                                           // Login Authendication Routes
 
