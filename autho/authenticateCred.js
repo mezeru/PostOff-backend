@@ -3,7 +3,6 @@ const express = require('express');
 
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const credentialsModel = require('../model/credentials');
 const refreshTokenDb = require('../model/refreshTokens');
 const generateToken = require('./generateToken');
 const passport = require('passport');
@@ -18,7 +17,6 @@ router.post('/login', passport.authenticate('local') ,async (req,res) => {
             refreshToken: refreshToken
         })
  
-       const resp = await RefreshToken.save();
        res.status(200).json({accessToken:token , refreshToken:refreshToken });
 
        }
