@@ -43,7 +43,7 @@ db();                                                                   // Conne
 app.use(passport.initialize());
 
 app.get('/',(req,res) =>{
-    res.json({message:"Login"});
+    res.send("Server is UP");
 })
 
 // enterData(data).catch(e => {                                         // Enter All the Data in MongoDB in the first run
