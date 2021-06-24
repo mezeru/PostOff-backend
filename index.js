@@ -10,7 +10,7 @@ const data = require('./parser');                                       // Data 
 const authRouter = require('./autho/authenticateCred');                 // Login Routes
 const authendicateToken = require('./autho/authenticateToken')
 const enterCredentials = require('./enterCredentials');                 // Function for entering credentials
-const customerRoute = require('./routes/router')
+const route = require('./routes/router')
 const passport = require('passport')
 const passportStrat = require('./autho/passport-config');
 const socketFunc = require('./socketFunc');
@@ -58,7 +58,7 @@ app.get('/',(req,res) =>{
 
 app.use('/users',authRouter);                                           // Login Authendication Routes
 
-app.use('/customer',customerRoute);  
+app.use('/customer',route);  
 
 io.on('connection', socket => {
 

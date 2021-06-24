@@ -17,7 +17,8 @@ module.exports = async function(branchName){
         }
     }
     else{
-        const alerts = null;
+        const alerts = await adminModel.find();
+        return alerts.alerts;
     }
 
 }
