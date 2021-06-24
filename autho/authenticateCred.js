@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-
+const branchModel = require('../model/branch');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const refreshTokenDb = require('../model/refreshTokens');
@@ -63,7 +63,23 @@ router.delete('/logout',async (req,res) => {
 });
 
 
+router.post('/seen',async (req,res) => {
 
+    const name = res.body.name;
+    const alertId = res.body.name;
+
+    try{
+        const branch = await branchModel.updateOne(
+            {branchName:name,alerts: {$all : id} },
+            {$set:{"seen" : "true"}}
+        );
+        res.sendStatus(200);
+    }
+    catch(e){
+        res.sendStatus(500);
+    }
+
+});
 
 
 module.exports = router;
