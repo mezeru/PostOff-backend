@@ -1,15 +1,23 @@
 const branchModel = require("./model/branch");
+const adminModel = require('./model/admin');
 
 module.exports = async function(branchName){
-    try{
-        const branch = await branchModel.findOne({
-            branchName:branchName
-        });
+    
+    if(branchName !== "admin")
+    {
+        try{
+            const branch = await branchModel.findOne({
+                branchName:branchName
+            });
         
-        return branch.alerts.reverse();        
+            return branch.alerts.reverse();        
+        }
+        catch(e){
+            return e;
+        }
     }
-    catch(e){
-        return e;
+    else{
+        const alerts = null;
     }
 
 }

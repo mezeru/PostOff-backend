@@ -13,6 +13,9 @@ const alert = new mongoose.Schema({
     Seen:{
         type:Boolean,
         default:false
+    },
+    pincode:{
+        type:String
     }
 
 });

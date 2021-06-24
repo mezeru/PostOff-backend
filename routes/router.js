@@ -2,11 +2,9 @@ const express = require('express');
 const alertModel = require('../model/alert');
 const branchModel = require('../model/branch')
 const router = express.Router();
+const adminModel = require('../model/admin');
 
 router.put('/',async (req,res) => {
-
-
-    console.log(req.body);
 
     const pincode = req.body.pincode;
     const contact = req.body.contact;
@@ -16,7 +14,7 @@ router.put('/',async (req,res) => {
     let time = atm.getHours() + ":" + atm.getMinutes() + ":" + atm.getSeconds();
     let dateTime = date+' '+time;
 
-    const alert = {
+    let alert = {
         contactinfo:contact,
         Time:dateTime
     };
@@ -27,11 +25,29 @@ router.put('/',async (req,res) => {
         { $push: { alerts : alert } }
         );
 
+        const branches =  await branchModel.find(
+           {pincode:{$all:[pincode]}}
+        )
+
         if(resp.n === 0){
+            alert = {
+                contactinfo:contact,
+                pincode:pincode
+            };
+
+            const admin = new adminModel({
+                pincode:pincode,
+                alert:alert,
+                noFound:false
+            });
+
+            await admin.save();
+
             res.sendStatus(404);
+
         }
         else{
-            res.sendStatus(200);
+            res.json({branches:branches});
         }
 
     }catch(e){
@@ -39,7 +55,31 @@ router.put('/',async (req,res) => {
     }
 
 
-  
+    try{
+        
+    if(resp !== 0){
+        alert = {
+            contactinfo:contact,
+            Time:dateTime,
+            pincode:pincode
+        };
+
+    }
+
+        const admin = new adminModel({
+            pincode:pincode,
+            alert:alert,
+            noFound:false
+        });
+
+
+        await admin.save();
+
+    }
+    catch(e){
+
+    }
+
 
 });
 
