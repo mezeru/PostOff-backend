@@ -46,13 +46,13 @@ app.get('/',(req,res) =>{
     res.send("Server is UP");
 })
 
-// enterData(data).catch(e => {                                         // Enter All the Data in MongoDB in the first run
-//     console.log(e);
-// });
+enterData(data).catch(e => {                                         // Enter All the Data in MongoDB in the first run
+    console.log(e);
+});
 
-// enterCredentials(data).catch(e => {                                  // Enter The Login Credentials in MongoDB in the first run
-//     console.log(e);
-// })
+enterCredentials(data).catch(e => {                                  // Enter The Login Credentials in MongoDB in the first run
+    console.log(e);
+})
 
 
 
