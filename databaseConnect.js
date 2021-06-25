@@ -1,6 +1,7 @@
+require('dotenv').config();
 module.exports = function(){
     const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/Bettle', {
+mongoose.connect(env.process.MONGODB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
