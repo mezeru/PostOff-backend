@@ -17,9 +17,10 @@ const socketFunc = require('./socketFunc');
 const branch = require('./model/branch');
 const authenticateToken = require('./autho/authenticateToken');
 const io = require('socket.io')(3001,{
-    cors:({
-        origin:"*"
-    })
+    cors:{
+        origin:"*",
+        methods: ["GET", "POST"]
+    }
 });
 
 
@@ -46,13 +47,13 @@ app.get('/',(req,res) =>{
     res.send("Server is UP");
 })
 
-enterData(data).catch(e => {                                         // Enter All the Data in MongoDB in the first run
-    console.log(e);
-});
+// enterData(data).catch(e => {                                         // Enter All the Data in MongoDB in the first run
+//     console.log(e);
+// });
 
-enterCredentials(data).catch(e => {                                  // Enter The Login Credentials in MongoDB in the first run
-    console.log(e);
-})
+// enterCredentials(data).catch(e => {                                  // Enter The Login Credentials in MongoDB in the first run
+//     console.log(e);
+// })
 
 
 
