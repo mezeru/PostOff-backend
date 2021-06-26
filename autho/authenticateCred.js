@@ -65,14 +65,15 @@ router.delete('/logout',async (req,res) => {
 
 router.post('/seen',async (req,res) => {
 
-    const name = res.body.name;
-    const alertId = res.body.name;
-
+    const alertId = req.body.id;
+    const name = req.body.name;
+    
     try{
         const branch = await branchModel.updateOne(
-            {branchName:name,alerts: {$all : id} },
-            {$set:{"seen" : "true"}}
+            {branchName:name,"alerts._id":alertId},
+            {$set :{"alerts.$.Seen":true}}
         );
+
         res.sendStatus(200);
     }
     catch(e){
