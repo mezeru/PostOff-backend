@@ -1,6 +1,6 @@
 # Bettle API backend
 
-Made for SuperProcure Round 1 Assignment
+Made for SuperProcure Assignment (Scavenger Hunt)
 
 Hosted on netlify : https://bettle-app.netlify.app/
 
